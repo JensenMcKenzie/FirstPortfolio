@@ -84,13 +84,16 @@ p {
   white-space: nowrap;
   margin: 0;
   letter-spacing: 0.05em;
-  animation: typing 0.5s steps(30, end);
+  animation: typing 1s steps(30, end);
 }
 .no-animation {
   animation: typing 0 steps(30, end);
 }
 .margin {
   margin-left: 20px;
+}
+.no-animation {
+  animation: typing 0 steps(30, end);
 }
 @keyframes typing {
   from {
@@ -99,4 +102,14 @@ p {
   to {
     width: 100%;
   }
+}
+
+#window {
+  position: absolute;
+  background-color: #8e839c;
+}
+
+#header {
+  padding: 10px;
+  cursor: move;
 }
