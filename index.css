@@ -41,6 +41,7 @@ code {
   color: #8c00ff;
 }
 #liner {
+  margin-left: 5px;
   line-height: 1.3em;
   margin-top: -2px;
   animation: show 0.25s ease forwards;
@@ -104,12 +105,40 @@ p {
   }
 }
 
-#window {
+.window {
   position: absolute;
-  background-color: #8e839c;
+  background-color: #838383;
+  padding-bottom: 1%;
+  border-radius: 10px;
+  min-width: 50%;
 }
 
-#header {
-  padding: 10px;
+.header {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3px;
+  padding: 1%;
   cursor: move;
+  background-color: darkgrey;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 12px;
+}
+
+.top-right {
+  border-radius: 50%;
+  border: none;
+  height: 100%;
+}
+
+#console {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#board{
+  margin: 5%;
+  height: 90%;
+  width: 90%;
+  background-color: purple;
 }

@@ -9,9 +9,19 @@ var pastEntriesPointer = -1;
 help = [
     "This is a simple terminal.",
     "You can type in commands and they will be executed.",
-    "You can also type in commands that are not supported by this terminal.",
     "The commands are:",
     "help - displays this help",
+    "window - opens a new window",
+    "jensen - displays Jensen's bio"
+]
+error = [
+    "This command is not supported.",
+    "Try typing in 'help' to see what commands are supported."
+]
+jensen = [
+    "Jensen McKenzie is a software engineer.",
+    "He studies Computer Science at University Of California, San Diego.",
+    "He loves the outdoors, and goes hiking or camping any chance he gets."
 ]
 
 document.addEventListener('keydown', key);
@@ -22,10 +32,10 @@ document.onload = setTimeout(function () {
 });
 
 function key(e) {
-    if(e.keyCode > 46 && e.keyCode < 91) {
+    if(e.keyCode > 46 && e.keyCode < 91 || e.keyCode == 32) {
         entry.innerHTML = entry.innerHTML + e.key;
     }
-    else if(e.keyCode == 8 && entry.innerHTML.charAt(entry.innerHTML.length - 1) != " ") {
+    else if(e.keyCode == 8 && entry.innerHTML.charAt(entry.innerHTML.length - 2) != "$") {
         entry.innerHTML = entry.innerHTML.slice(0, -1);
     }
     else if(e.keyCode == 13){
@@ -33,8 +43,21 @@ function key(e) {
         if (entry.innerHTML.slice(entry.innerHTML.indexOf(" ") + 1) == "help") {
             loopLines(help, "", 100);
         }
-        if (entry.innerHTML.slice(entry.innerHTML.indexOf(" ") + 1) == "xx") {
+        else if (entry.innerHTML.slice(entry.innerHTML.indexOf(" ") + 1) == "xx") {
             loopLines(help, "", 100);
+        }
+        else if (entry.innerHTML.slice(entry.innerHTML.indexOf(" ") + 1).slice(0, 6) == "window"){
+            const location = entry.innerHTML.slice(entry.innerHTML.indexOf(" ") + 1).slice(7).split(" ");
+            if (location.length == 2 && location[0] > 0 && location[1] > 0){
+              var newWin = uiWindow.render(location[0], location[1], window);
+            }else{
+              loopLines(error, "", 100);
+            }
+        }
+        else if (entry.innerHTML.slice(entry.innerHTML.indexOf(" ") + 1) == "jensen") {
+            loopLines(jensen, "", 100);
+        }else{
+          loopLines(error, "", 100);
         }
         addNewLine();
     }
@@ -88,47 +111,4 @@ function loopLines(name, style, time) {
     name.forEach(function(item, index) {
       addLine(item, style, index * time);
     });
-  }
-
-  dragElement(document.getElementById("window"));
-
-  function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById("header")) {
-      // if present, the header is where you move the DIV from:
-      document.getElementById("header").onmousedown = dragMouseDown;
-    } else {
-      // otherwise, move the DIV from anywhere inside the DIV:
-      elmnt.onmousedown = dragMouseDown;
-    }
-  
-    function dragMouseDown(e) {
-      e = e || window.event;
-      e.preventDefault();
-      // get the mouse cursor position at startup:
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      document.onmouseup = closeDragElement;
-      // call a function whenever the cursor moves:
-      document.onmousemove = elementDrag;
-    }
-  
-    function elementDrag(e) {
-      e = e || window.event;
-      e.preventDefault();
-      // calculate the new cursor position:
-      pos1 = pos3 - e.clientX;
-      pos2 = pos4 - e.clientY;
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-      // set the element's new position:
-      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    }
-  
-    function closeDragElement() {
-      // stop moving when mouse button is released:
-      document.onmouseup = null;
-      document.onmousemove = null;
-    }
-  }
+}

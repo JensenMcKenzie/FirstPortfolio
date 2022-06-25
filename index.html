@@ -5,11 +5,11 @@
       <title>Jensen McKenzie</title>
       <link rel="stylesheet" href="index.css">
     </head>
-    <body>
-      <div id="window">
-        <div id ="header">Drag</div>
+    <body id="main-body">
+      <div id="window" class="window">
+        <div id ="header" class="header"><button onclick="if (this.parentElement.parentElement.style.width != '100%')this.parentElement.parentElement.style = 'width: 100%; height: 100%;';else{this.parentElement.parentElement.style.removeProperty('width');this.parentElement.parentElement.style.removeProperty('height');}" class="top-right" style="background-color: rgb(19, 245, 19);"><button class="top-right" style="background-color: yellow"><button onclick="this.parentElement.parentElement.remove();" class="top-right" style="background-color: red;"></button></div>
         <div id="console">
-          <span id="intro"><h1>Hello Iuliia!!</h1></span><textarea disabled type="text" id="texter" onkeyup="typeIt(this, event)" onkeydown="typeIt(this, event); 
+          <span id="intro">Welcome!</span><textarea disabled type="text" id="texter" onkeyup="typeIt(this, event)" onkeydown="typeIt(this, event); 
           moveIt(this.value.length, event)" onkeypress="typeIt(this, event);" autofocus=""></textarea>
           <a id="before"></a>
         </div>
@@ -17,6 +17,10 @@
           <span id="typer"></span><b class="cursor" id="cursor">█</b>
         </div>
       </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js" type="text/javascript"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js" type="text/javascript"></script>
     <script src="index.js"></script>
+    <script src="window.js"></script>
+    <script src="2048.js"></script>
     </body>
 </html>
