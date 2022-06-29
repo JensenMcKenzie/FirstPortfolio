@@ -49,7 +49,7 @@ function key(e) {
         else if (entry.innerHTML.slice(entry.innerHTML.indexOf(" ") + 1).slice(0, 6) == "window"){
             const location = entry.innerHTML.slice(entry.innerHTML.indexOf(" ") + 1).slice(7).split(" ");
             if (location.length == 2 && location[0] > 0 && location[1] > 0){
-              var newWin = uiWindow.render(location[0], location[1], window);
+              var newWin = uiWindow.render(location[0], location[1], "", "window");
             }else{
               loopLines(error, "", 100);
             }

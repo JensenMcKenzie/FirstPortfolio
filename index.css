@@ -108,9 +108,7 @@ p {
 .window {
   position: absolute;
   background-color: #838383;
-  padding-bottom: 1%;
   border-radius: 10px;
-  min-width: 50%;
 }
 
 .header {
@@ -137,8 +135,14 @@ p {
 }
 
 #board{
-  margin: 5%;
-  height: 90%;
-  width: 90%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  row-gap: 1px;
+  column-gap: 1x;
+  grid-template-columns: auto auto auto auto;
+  height: 270px;
+  width: 270px;
+  margin: 9px;
   background-color: purple;
 }
